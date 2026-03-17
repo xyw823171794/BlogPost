@@ -1,0 +1,25 @@
+baseURL: https://xyw823171794.github.io/BlogPost/
+title: "我的技术笔记"
+theme: hugo-book
+languageCode: zh-cn
+hasCJKLanguage: true  # 告诉 Hugo 开启对中日韩文字的处理，优化搜索和摘要
+
+# 程序员笔记必备配置
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # 允许在 Markdown 中使用 HTML（如内嵌视频/复杂表格）
+  highlight:
+    style: monokai # 代码高亮风格，你也可以换成 dracula
+    noClasses: false
+
+params:
+  # --- Hugo Book 主题核心设置 ---
+  # 开启自动导航栏，它会根据 content 目录结构自动生成侧边栏
+  BookSection: "*" 
+  # 开启搜索功能
+  BookSearch: true
+  # 开启目录（TOC）
+  BookToc: true
+  # 侧边栏菜单标题
+  BookMenuBundle: /menu

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>我的技术笔记</title>
+    <link>http://localhost:1313/BlogPost/%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content on 我的技术笔记</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 17 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/BlogPost/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我的第一篇笔记</title>
+      <link>http://localhost:1313/BlogPost/%E7%AC%94%E8%AE%B0/hello/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/BlogPost/%E7%AC%94%E8%AE%B0/hello/</guid>
+      <description>&lt;h2 id=&#34;欢迎来到我的博客&#34;&gt;欢迎来到我的博客&lt;a class=&#34;anchor&#34; href=&#34;#%e6%ac%a2%e8%bf%8e%e6%9d%a5%e5%88%b0%e6%88%91%e7%9a%84%e5%8d%9a%e5%ae%a2&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;如果你能看到这段话，说明部署成功了！&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
