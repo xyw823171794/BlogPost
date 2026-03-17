@@ -10,16 +10,25 @@ markup:
     renderer:
       unsafe: true # 允许在 Markdown 中使用 HTML（如内嵌视频/复杂表格）
   highlight:
-    style: monokai # 代码高亮风格，你也可以换成 dracula
-    noClasses: false
+    style: dracula # 代码高亮风格，你也可以换成  monokai 
+    lineNos: true            # 显示行号
+    guessSyntax: true        # 自动识别语言
 
 params:
-  # --- Hugo Book 主题核心设置 ---
-  # 开启自动导航栏，它会根据 content 目录结构自动生成侧边栏
-  BookSection: "*" 
-  # 开启搜索功能
-  BookSearch: true
-  # 开启目录（TOC）
-  BookToc: true
-  # 侧边栏菜单标题
-  BookMenuBundle: /menu
+  # --- 基础美化 ---
+  BookLogo: "logo.png"       # 如果你有头像，放进 static 文件夹并改名
+  BookSearch: true            # 开启左侧实时搜索框
+  BookComments: false         # 程序员笔记通常不需要评论区，关掉更清爽
+  
+  # --- 侧边栏逻辑 ---
+  BookSection: "*"            # 自动扫描所有文件夹生成目录
+  BookMenuBundle: /menu       # 保持这个，它是自动菜单的关键
+  BookCollapseSection: true   # 【强烈推荐】默认折叠非当前章节，侧边栏不显乱
+  
+  # --- 内容页面 ---
+  BookToC: true               # 开启右侧文章目录（自动提取 ## 标题）
+  BookEditPath: "edit/main/content" # 可以在页面底部显示“编辑此页”，很有开源感
+  
+  # --- 视觉风格 ---
+  # 可选值: light (默认), dark (深色模式), auto (随系统)
+  BookTheme: "auto"

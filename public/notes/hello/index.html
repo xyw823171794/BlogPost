@@ -33,17 +33,17 @@ https://github.com/alex-shpak/hugo-book
 脚本内容示例（支持选模型、选模式、追加参数）：">
   <meta itemprop="datePublished" content="2026-03-17T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-03-17T00:00:00+00:00">
-  <meta itemprop="wordCount" content="716">
+  <meta itemprop="wordCount" content="742">
 
 <title>教程：如何将复杂命令封装为“简单命令” | 我的技术笔记</title>
 <link rel="icon" href="/BlogPost/favicon.png" >
 <link rel="manifest" href="/BlogPost/manifest.json">
 <link rel="canonical" href="http://localhost:1313/BlogPost/notes/hello/">
-<link rel="stylesheet" href="/BlogPost/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+<link rel="stylesheet" href="/BlogPost/book.min.b267f830fdf65302ecc1702a1178d4f25aa783409b3a25098f3404dd24f37a4d.css" integrity="sha256-smf4MP32UwLswXAqEXjU8lqng0CbOiUJjzQE3STzek0=" crossorigin="anonymous">
 
 
   <script defer src="/BlogPost/fuse.min.js"></script>
-  <script defer src="/BlogPost/en.search.min.e3c392b613756948c701fcded0ccf886a00093634500f1f5a86a6afb602fd5f7.js" integrity="sha256-48OSthN1aUjHAfze0Mz4hqAAk2NFAPH1qGpq&#43;2Av1fc=" crossorigin="anonymous"></script>
+  <script defer src="/BlogPost/en.search.min.8a5dc6680af4d8f712207c347c0b2686d547fe6b5c3e25b2b9b7f87e59c41c95.js" integrity="sha256-il3GaAr02PcSIHw0fAsmhtVH/mtcPiWyubf4flnEHJU=" crossorigin="anonymous"></script>
 
 
 
@@ -59,7 +59,7 @@ https://github.com/alex-shpak/hugo-book
     
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/BlogPost/"><span>我的技术笔记</span>
+  <a class="flex align-center" href="/BlogPost/"><img src="/BlogPost/logo.png" alt="Logo" /><span>我的技术笔记</span>
   </a>
 </h2>
 
@@ -100,8 +100,8 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-3735eb29463b43f3e96140246b92b0cf" class="toggle" checked />
     <label for="section-3735eb29463b43f3e96140246b92b0cf" class="flex">
-      <a role="button" class="">
-        学习笔记</a>
+      <a href="/BlogPost/notes/" class="">
+        我的技术笔记</a>
       <img src="/BlogPost/icons/chevron-right.svg" class="book-icon" alt="Expand" />
     </label>
   
@@ -208,40 +208,83 @@ https://github.com/alex-shpak/hugo-book
 </li>
 <li>
 <p><strong>脚本内容示例（支持选模型、选模式、追加参数）：</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># 1. 进入程序目录</span>
-</span></span><span class="line"><span class="cl"><span class="nb">cd </span><span class="s2">&#34;D:\AI\llamaCpp_Release\Release&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># 2. 列出所有模型 (.gguf)</span>
-</span></span><span class="line"><span class="cl"><span class="nv">$models</span> <span class="p">=</span> <span class="nb">Get-ChildItem</span> <span class="s2">&#34;D:\AI\Models&#34;</span> <span class="n">-Filter</span> <span class="s2">&#34;*.gguf&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="p">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">-lt</span> <span class="nv">$models</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="nv">$i</span><span class="p">++)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">Write-Host</span> <span class="s2">&#34;[</span><span class="nv">$i</span><span class="s2">] </span><span class="p">$(</span><span class="nv">$models</span><span class="p">[</span><span class="nv">$i</span><span class="p">].</span><span class="n">Name</span><span class="p">)</span><span class="s2">&#34;</span> <span class="n">-ForegroundColor</span> <span class="n">Cyan</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># 3. 交互获取输入</span>
-</span></span><span class="line"><span class="cl"><span class="nv">$idx</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&#34;</span><span class="se">`n</span><span class="s2">请选择模型编号 (默认0)&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nv">$idx</span> <span class="o">-eq</span> <span class="s2">&#34;&#34;</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$idx</span> <span class="p">=</span> <span class="mf">0</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nv">$mode</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&#34;访问模式: [1]本地 [2]Tailscale (默认1)&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">$host</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$mode</span> <span class="o">-eq</span> <span class="s2">&#34;2&#34;</span><span class="p">)</span> <span class="p">{</span> <span class="s2">&#34;0.0.0.0&#34;</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="s2">&#34;127.0.0.1&#34;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nv">$extra</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&#34;追加参数 (如 -ngl 99)&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># 4. 执行最终命令</span>
-</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="nb">llama-server</span><span class="p">.</span><span class="py">exe</span> <span class="n">-m</span> <span class="vm">$</span><span class="p">(</span><span class="nv">$models</span><span class="p">[</span><span class="nv">$idx</span><span class="p">].</span><span class="n">FullName</span><span class="p">)</span> <span class="p">-</span><span class="n">-host</span> <span class="nv">$host</span> <span class="p">-</span><span class="n">-port</span> <span class="mf">8080</span> <span class="nv">$extra</span></span></span></code></pre></div></li>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#6272a4"># 1. 进入程序目录</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd </span><span style="color:#f1fa8c">&#34;D:\AI\llamaCpp_Release\Release&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 2. 列出所有模型 (.gguf)</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">$models</span> = <span style="color:#8be9fd;font-style:italic">Get-ChildItem</span> <span style="color:#f1fa8c">&#34;D:\AI\Models&#34;</span> -Filter <span style="color:#f1fa8c">&#34;*.gguf&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">for</span> (<span style="color:#8be9fd;font-style:italic">$i</span> = <span style="color:#bd93f9">0</span>; <span style="color:#8be9fd;font-style:italic">$i</span> <span style="color:#ff79c6">-lt</span> <span style="color:#8be9fd;font-style:italic">$models</span>.Count; <span style="color:#8be9fd;font-style:italic">$i</span>++) {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">Write-Host</span> <span style="color:#f1fa8c">&#34;[</span><span style="color:#8be9fd;font-style:italic">$i</span><span style="color:#f1fa8c">] </span>$(<span style="color:#8be9fd;font-style:italic">$models</span>[<span style="color:#8be9fd;font-style:italic">$i</span>].Name)<span style="color:#f1fa8c">&#34;</span> -ForegroundColor Cyan
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 3. 交互获取输入</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">$idx</span> = <span style="color:#8be9fd;font-style:italic">Read-Host</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">`n</span><span style="color:#f1fa8c">请选择模型编号 (默认0)&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> (<span style="color:#8be9fd;font-style:italic">$idx</span> <span style="color:#ff79c6">-eq</span> <span style="color:#f1fa8c">&#34;&#34;</span>) { <span style="color:#8be9fd;font-style:italic">$idx</span> = <span style="color:#bd93f9">0</span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">$mode</span> = <span style="color:#8be9fd;font-style:italic">Read-Host</span> <span style="color:#f1fa8c">&#34;访问模式: [1]本地 [2]Tailscale (默认1)&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">$host</span> = <span style="color:#ff79c6">if</span> (<span style="color:#8be9fd;font-style:italic">$mode</span> <span style="color:#ff79c6">-eq</span> <span style="color:#f1fa8c">&#34;2&#34;</span>) { <span style="color:#f1fa8c">&#34;0.0.0.0&#34;</span> } <span style="color:#ff79c6">else</span> { <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">$extra</span> = <span style="color:#8be9fd;font-style:italic">Read-Host</span> <span style="color:#f1fa8c">&#34;追加参数 (如 -ngl 99)&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 4. 执行最终命令</span>
+</span></span><span style="display:flex;"><span>.\<span style="color:#8be9fd;font-style:italic">llama-server</span>.exe -m <span style="color:#8be9fd;font-style:italic">$</span>(<span style="color:#8be9fd;font-style:italic">$models</span>[<span style="color:#8be9fd;font-style:italic">$idx</span>].FullName) --host <span style="color:#8be9fd;font-style:italic">$host</span> --port <span style="color:#bd93f9">8080</span> <span style="color:#8be9fd;font-style:italic">$extra</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 </ol>
 <hr>
 <h3 id="第二阶段注册短命令别名-alias">第二阶段：注册“短命令”别名 (Alias)<a class="anchor" href="#%e7%ac%ac%e4%ba%8c%e9%98%b6%e6%ae%b5%e6%b3%a8%e5%86%8c%e7%9f%ad%e5%91%bd%e4%bb%a4%e5%88%ab%e5%90%8d-alias">#</a></h3>
 <p>为了不输入长路径，我们需要利用 PowerShell 的 <code>$PROFILE</code>（配置文件），它相当于 Linux 的 <code>.bashrc</code>。</p>
 <h4 id="1-强制初始化配置文件">1. 强制初始化配置文件<a class="anchor" href="#1-%e5%bc%ba%e5%88%b6%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6">#</a></h4>
 <p>在 PowerShell 中运行，防止路径不存在导致报错：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(!(</span><span class="nb">Test-Path</span> <span class="p">(</span><span class="nb">Split-Path</span> <span class="nv">$PROFILE</span><span class="p">)))</span> <span class="p">{</span> <span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Path</span> <span class="p">(</span><span class="nb">Split-Path</span> <span class="nv">$PROFILE</span><span class="p">)</span> <span class="n">-Force</span> <span class="p">};</span> <span class="nb">Out-File</span> <span class="n">-FilePath</span> <span class="nv">$PROFILE</span> <span class="n">-Append</span> <span class="n">-InputObject</span> <span class="s2">&#34;&#34;</span></span></span></code></pre></div><h4 id="2-编辑配置文件">2. 编辑配置文件<a class="anchor" href="#2-%e7%bc%96%e8%be%91%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6">#</a></h4>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#ff79c6">if</span> (!(<span style="color:#8be9fd;font-style:italic">Test-Path</span> (<span style="color:#8be9fd;font-style:italic">Split-Path</span> <span style="color:#8be9fd;font-style:italic">$PROFILE</span>))) { <span style="color:#8be9fd;font-style:italic">New-Item</span> -ItemType Directory -Path (<span style="color:#8be9fd;font-style:italic">Split-Path</span> <span style="color:#8be9fd;font-style:italic">$PROFILE</span>) -Force }; <span style="color:#8be9fd;font-style:italic">Out-File</span> -FilePath <span style="color:#8be9fd;font-style:italic">$PROFILE</span> -Append -InputObject <span style="color:#f1fa8c">&#34;&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2-编辑配置文件">2. 编辑配置文件<a class="anchor" href="#2-%e7%bc%96%e8%be%91%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6">#</a></h4>
 <p>输入 <code>notepad $PROFILE</code> 打开记事本。</p>
 <h4 id="3-编写函数别名">3. 编写函数别名<a class="anchor" href="#3-%e7%bc%96%e5%86%99%e5%87%bd%e6%95%b0%e5%88%ab%e5%90%8d">#</a></h4>
 <p>在文件末尾添加以下代码：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># 定义别名 &#39;ai&#39; 指向你的脚本</span>
-</span></span><span class="line"><span class="cl"><span class="kd">function</span><span class="w"> </span><span class="nb">ai</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">powershell</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="s2">&#34;D:\AI\start_model.ps1&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div><ul>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#6272a4"># 定义别名 &#39;ai&#39; 指向你的脚本</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">function</span> <span style="color:#8be9fd;font-style:italic">ai</span> {
+</span></span><span style="display:flex;"><span>    powershell -ExecutionPolicy Bypass <span style="color:#ff79c6">-File</span> <span style="color:#f1fa8c">&#34;D:\AI\start_model.ps1&#34;</span>
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li><strong><code>function ai</code></strong>: <code>ai</code> 就是你的简单命令，你可以改成任何你喜欢的词（比如 <code>ll</code>）。</li>
 <li><strong><code>-ExecutionPolicy Bypass</code></strong>: 确保即使系统限制了脚本运行，该命令也能正常启动。</li>
 </ul>
@@ -294,14 +337,24 @@ https://github.com/alex-shpak/hugo-book
   
   
   
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/BlogPost/notes/" class="flex align-center">
+        <img src="/BlogPost/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>我的技术笔记</span>
+      </a>
+    
+    </span>
+    <span>
+    
+    </span>
+  </div>
+  
 
 
  
         
-  
-  <div class="book-comments">
-
-</div>
   
  
         

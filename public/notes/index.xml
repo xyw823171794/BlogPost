@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>学习笔记 on 我的技术笔记</title>
+    <title>我的技术笔记</title>
     <link>http://localhost:1313/BlogPost/notes/</link>
-    <description>Recent content in 学习笔记 on 我的技术笔记</description>
+    <description>Recent content on 我的技术笔记</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 17 Mar 2026 15:38:58 +0800</lastBuildDate>
