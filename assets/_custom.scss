@@ -1,0 +1,82 @@
+/* 1. 强制穿透所有自带背景 */
+:root {
+    --body-background: transparent !important;
+    --content-background: transparent !important;
+}
+
+html, body {
+    height: 100vh !important;
+    overflow: hidden !important; /* 禁止整页滚动 */
+    margin: 0;
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url("/BlogPost/bg.jpg") no-repeat center center fixed !important;
+    background-size: cover !important;
+}
+
+/* 2. 定位最外层容器 */
+.book-container {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    padding: 0 !important;
+}
+
+/* 3. 左侧菜单栏：强制固定宽度和高度 */
+.book-menu {
+    flex: 0 0 280px !important; /* 宽度固定 280px */
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(12px) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 20px !important;
+    overflow-y: auto !important;
+}
+
+/* 4. 右侧内容总区域 */
+.book-main {
+    flex: 1 !important; /* 占据剩余所有空间 */
+    height: 100vh !important;
+    display: flex !important;
+    flex-direction: row !important; /* 让正文和大纲横向并排 */
+    overflow: hidden !important;
+}
+
+/* 5. 中间正文区：真正的磨砂卡片 */
+.book-page {
+    flex: 1 !important; /* 自动伸缩 */
+    height: calc(100vh - 40px) !important;
+    margin: 20px !important; /* 四周留白，产生悬浮感 */
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(15px) saturate(150%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 12px !important;
+    padding: 2.5rem !important;
+    overflow-y: auto !important; /* 只有这里滚动 */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+    max-width: none !important;
+}
+
+/* 6. 右侧大纲 (TOC)：独立出来 */
+aside.book-toc {
+    flex: 0 0 250px !important; /* 宽度固定 250px */
+    height: calc(100vh - 40px) !important;
+    margin: 20px 20px 20px 0 !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 12px;
+    padding: 15px !important;
+    overflow-y: auto !important;
+}
+
+/* 7. 文字与图标修复 */
+body, a, p, li, h1, h2, h3, span, label, strong {
+    color: #ffffff !important;
+}
+
+/* 彻底关掉移动端那个白色的 Header */
+.book-header { display: none !important; }

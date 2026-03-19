@@ -1,5 +1,5 @@
 ---
-title: "我的技术笔记"
+title: " 技术笔记 2"
 bookCollapseSection: true
 weight: 10
 ---

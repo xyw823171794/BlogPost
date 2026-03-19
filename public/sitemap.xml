@@ -2,10 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/BlogPost/notes/note_1/</loc>
-    <lastmod>2026-03-17T15:38:58+08:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/BlogPost/notes/</loc>
+    <lastmod>2026-03-18T11:01:29+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/BlogPost/notes/hugo%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
+    <lastmod>2026-03-18T11:01:29+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/BlogPost/notes/note_1/</loc>
     <lastmod>2026-03-17T15:38:58+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/BlogPost/</loc>
@@ -13,6 +16,8 @@
   </url><url>
     <loc>http://localhost:1313/BlogPost/notes/hello/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/BlogPost/menu/</loc>
   </url><url>
     <loc>http://localhost:1313/BlogPost/categories/</loc>
   </url><url>

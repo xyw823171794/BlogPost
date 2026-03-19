@@ -6,14 +6,21 @@
     <description>Recent content on 我的技术笔记</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 17 Mar 2026 15:38:58 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 18 Mar 2026 11:01:29 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/BlogPost/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Note_1</title>
+      <title>Hugo使用指南</title>
+      <link>http://localhost:1313/BlogPost/notes/hugo%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Wed, 18 Mar 2026 11:01:29 +0800</pubDate>
+      <guid>http://localhost:1313/BlogPost/notes/hugo%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
+      <description>&lt;p&gt;创建文章：hugo new notes/文件名.md&lt;/p&gt;&#xA;&lt;p&gt;启动预览：hugo server -D&lt;/p&gt;&#xA;&lt;p&gt;生成网页：hugo&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>编译llamaCpp 并使用大模型</title>
       <link>http://localhost:1313/BlogPost/notes/note_1/</link>
       <pubDate>Tue, 17 Mar 2026 15:38:58 +0800</pubDate>
       <guid>http://localhost:1313/BlogPost/notes/note_1/</guid>
-      <description></description>
+      <description>&lt;p&gt;2026-03-18 11:56:45&lt;/p&gt;&#xA;&lt;h2 id=&#34;一-环境准备-核心依赖&#34;&gt;一、 环境准备 (核心依赖)&lt;a class=&#34;anchor&#34; href=&#34;#%e4%b8%80-%e7%8e%af%e5%a2%83%e5%87%86%e5%a4%87-%e6%a0%b8%e5%bf%83%e4%be%9d%e8%b5%96&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;在开始之前，确保你的系统已安装以下组件，这是调用 4060 显卡的前提：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;CUDA Toolkit&lt;/strong&gt;: 建议安装 12.x 或 13.1 版本（你当前为 13.1）。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Visual Studio 2022&lt;/strong&gt;: 必须安装“使用 C++ 的桌面开发”工作负载。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;CMake&lt;/strong&gt;: 建议版本 3.20 或更高。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;二-性能最大化编译步骤&#34;&gt;二、 性能最大化编译步骤&lt;a class=&#34;anchor&#34; href=&#34;#%e4%ba%8c-%e6%80%a7%e8%83%bd%e6%9c%80%e5%a4%a7%e5%8c%96%e7%bc%96%e8%af%91%e6%ad%a5%e9%aa%a4&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;针对你的 Ada Lovelace 架构 (RTX 4060)，请在 &lt;strong&gt;Developer PowerShell for VS 2022&lt;/strong&gt; 中执行以下命令：&lt;/p&gt;</description>
     </item>
     <item>
       <title>教程：如何将复杂命令封装为“简单命令”</title>
@@ -21,6 +28,13 @@
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/BlogPost/notes/hello/</guid>
       <description>&lt;h2 id=&#34;第一阶段编写核心脚本-ps1&#34;&gt;第一阶段：编写核心脚本 (&lt;code&gt;.ps1&lt;/code&gt;)&lt;a class=&#34;anchor&#34; href=&#34;#%e7%ac%ac%e4%b8%80%e9%98%b6%e6%ae%b5%e7%bc%96%e5%86%99%e6%a0%b8%e5%bf%83%e8%84%9a%e6%9c%ac-ps1&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;首先，将所有的逻辑写在一个 PowerShell 脚本里。这比 &lt;code&gt;.bat&lt;/code&gt; 文件更强大，支持逻辑判断和交互。&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;保存位置：&lt;/strong&gt; 建议放在一个固定的工具目录，例如 &lt;code&gt;D:\AI\start_model.ps1&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;脚本内容示例（支持选模型、选模式、追加参数）：&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/BlogPost/menu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/BlogPost/menu/</guid>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/BlogPost/&#34;&gt;🏠 首页&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/BlogPost/notes/&#34;&gt;📜 技术笔记&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/BlogPost/projects/&#34;&gt;🎨 个人项目&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>

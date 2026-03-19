@@ -8,12 +8,18 @@ https://github.com/alex-shpak/hugo-book
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="2026-03-18 11:56:45
+一、 环境准备 (核心依赖)#在开始之前，确保你的系统已安装以下组件，这是调用 4060 显卡的前提：
+CUDA Toolkit: 建议安装 12.x 或 13.1 版本（你当前为 13.1）。 Visual Studio 2022: 必须安装“使用 C&#43;&#43; 的桌面开发”工作负载。 CMake: 建议版本 3.20 或更高。 二、 性能最大化编译步骤#针对你的 Ada Lovelace 架构 (RTX 4060)，请在 Developer PowerShell for VS 2022 中执行以下命令：
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/BlogPost/notes/note_1/">
   <meta property="og:site_name" content="我的技术笔记">
-  <meta property="og:title" content="Note_1">
+  <meta property="og:title" content="编译llamaCpp 并使用大模型">
+  <meta property="og:description" content="2026-03-18 11:56:45
+一、 环境准备 (核心依赖)#在开始之前，确保你的系统已安装以下组件，这是调用 4060 显卡的前提：
+CUDA Toolkit: 建议安装 12.x 或 13.1 版本（你当前为 13.1）。 Visual Studio 2022: 必须安装“使用 C&#43;&#43; 的桌面开发”工作负载。 CMake: 建议版本 3.20 或更高。 二、 性能最大化编译步骤#针对你的 Ada Lovelace 架构 (RTX 4060)，请在 Developer PowerShell for VS 2022 中执行以下命令：">
   <meta property="og:locale" content="zh_cn">
   <meta property="og:type" content="article">
     <meta property="article:section" content="notes">
@@ -21,19 +27,23 @@ https://github.com/alex-shpak/hugo-book
     <meta property="article:modified_time" content="2026-03-17T15:38:58+08:00">
 
 
-  <meta itemprop="name" content="Note_1">
+  <meta itemprop="name" content="编译llamaCpp 并使用大模型">
+  <meta itemprop="description" content="2026-03-18 11:56:45
+一、 环境准备 (核心依赖)#在开始之前，确保你的系统已安装以下组件，这是调用 4060 显卡的前提：
+CUDA Toolkit: 建议安装 12.x 或 13.1 版本（你当前为 13.1）。 Visual Studio 2022: 必须安装“使用 C&#43;&#43; 的桌面开发”工作负载。 CMake: 建议版本 3.20 或更高。 二、 性能最大化编译步骤#针对你的 Ada Lovelace 架构 (RTX 4060)，请在 Developer PowerShell for VS 2022 中执行以下命令：">
   <meta itemprop="datePublished" content="2026-03-17T15:38:58+08:00">
   <meta itemprop="dateModified" content="2026-03-17T15:38:58+08:00">
+  <meta itemprop="wordCount" content="731">
 
-<title>Note_1 | 我的技术笔记</title>
+<title>编译llamaCpp 并使用大模型 | 我的技术笔记</title>
 <link rel="icon" href="/BlogPost/favicon.png" >
 <link rel="manifest" href="/BlogPost/manifest.json">
 <link rel="canonical" href="http://localhost:1313/BlogPost/notes/note_1/">
-<link rel="stylesheet" href="/BlogPost/book.min.b267f830fdf65302ecc1702a1178d4f25aa783409b3a25098f3404dd24f37a4d.css" integrity="sha256-smf4MP32UwLswXAqEXjU8lqng0CbOiUJjzQE3STzek0=" crossorigin="anonymous">
+<link rel="stylesheet" href="/BlogPost/book.min.ab80bfae33780c49243f8f5a4e8bbb2156a5cb4ea71922f21cdb6d8a4fd4751c.css" integrity="sha256-q4C/rjN4DEkkP49aTou7IValy06nGSLyHNttik/UdRw=" crossorigin="anonymous">
 
 
   <script defer src="/BlogPost/fuse.min.js"></script>
-  <script defer src="/BlogPost/en.search.min.8a5dc6680af4d8f712207c347c0b2686d547fe6b5c3e25b2b9b7f87e59c41c95.js" integrity="sha256-il3GaAr02PcSIHw0fAsmhtVH/mtcPiWyubf4flnEHJU=" crossorigin="anonymous"></script>
+  <script defer src="/BlogPost/en.search.min.66c72319fecea5cf4e259628605ba0c5291e233acc1be44cb781dcf4bf72fbdc.js" integrity="sha256-ZscjGf7Opc9OJZYoYFugxSkeIzrMG&#43;RMt4Hc9L9y&#43;9w=" crossorigin="anonymous"></script>
 
 
 
@@ -91,7 +101,7 @@ https://github.com/alex-shpak/hugo-book
     <input type="checkbox" id="section-3735eb29463b43f3e96140246b92b0cf" class="toggle" checked />
     <label for="section-3735eb29463b43f3e96140246b92b0cf" class="flex">
       <a href="/BlogPost/notes/" class="">
-        我的技术笔记</a>
+         技术笔记 2</a>
       <img src="/BlogPost/icons/chevron-right.svg" class="book-icon" alt="Expand" />
     </label>
   
@@ -99,6 +109,32 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/BlogPost/notes/hugo%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="">
+      Hugo使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/BlogPost/notes/note_1/" class="active">
+      编译llamaCpp 并使用大模型</a>
+  
+
+        </li>
       
     
       
@@ -116,6 +152,20 @@ https://github.com/alex-shpak/hugo-book
       
     
   </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/BlogPost/menu/" class="">
+      Index</a>
+  
 
         </li>
       
@@ -155,21 +205,114 @@ https://github.com/alex-shpak/hugo-book
     <img src="/BlogPost/icons/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Note_1</h3>
+  <h3>编译llamaCpp 并使用大模型</h3>
 
   <label for="toc-control">
+    
+    <img src="/BlogPost/icons/toc.svg" class="book-icon" alt="Table of Contents" />
     
   </label>
 </div>
 
 
   
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#一-环境准备-核心依赖">一、 环境准备 (核心依赖)</a>
+      <ul>
+        <li><a href="#二-性能最大化编译步骤">二、 性能最大化编译步骤</a></li>
+        <li><a href="#三-常见编译报错修复-no-cuda-toolset-found">三、 常见编译报错修复 (No CUDA toolset found)</a></li>
+        <li><a href="#四-运行时的榨干性能参数">四、 运行时的“榨干性能”参数</a></li>
+        <li><a href="#五-快速验证清单">五、 快速验证清单</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
  
       </header>
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><p>2026-03-18 11:56:45</p>
+<h2 id="一-环境准备-核心依赖">一、 环境准备 (核心依赖)<a class="anchor" href="#%e4%b8%80-%e7%8e%af%e5%a2%83%e5%87%86%e5%a4%87-%e6%a0%b8%e5%bf%83%e4%be%9d%e8%b5%96">#</a></h2>
+<p>在开始之前，确保你的系统已安装以下组件，这是调用 4060 显卡的前提：</p>
+<ul>
+<li><strong>CUDA Toolkit</strong>: 建议安装 12.x 或 13.1 版本（你当前为 13.1）。</li>
+<li><strong>Visual Studio 2022</strong>: 必须安装“使用 C++ 的桌面开发”工作负载。</li>
+<li><strong>CMake</strong>: 建议版本 3.20 或更高。</li>
+</ul>
+<h3 id="二-性能最大化编译步骤">二、 性能最大化编译步骤<a class="anchor" href="#%e4%ba%8c-%e6%80%a7%e8%83%bd%e6%9c%80%e5%a4%a7%e5%8c%96%e7%bc%96%e8%af%91%e6%ad%a5%e9%aa%a4">#</a></h3>
+<p>针对你的 Ada Lovelace 架构 (RTX 4060)，请在 <strong>Developer PowerShell for VS 2022</strong> 中执行以下命令：</p>
+<ol>
+<li>
+<p><strong>创建构建目录</strong>：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd </span>D:\AI\llama_2
+</span></span><span style="display:flex;"><span>mkdir build
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd </span>build</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>配置 CMake (针对 4060 优化)</strong>：
+使用 <code>-DGGML_CUDA=ON</code> 开启 GPU 加速，并指定 <code>8.9</code> 计算架构以获得最佳指令集优化：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>cmake .. -G <span style="color:#f1fa8c">&#34;Visual Studio 17 2022&#34;</span> -A x64 -DGGML_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=<span style="color:#bd93f9">89</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>执行高并发编译</strong>：
+使用 <code>Release</code> 模式（性能最高）并开启多线程编译：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>cmake --build . --config Release --parallel <span style="color:#bd93f9">16</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="三-常见编译报错修复-no-cuda-toolset-found">三、 常见编译报错修复 (No CUDA toolset found)<a class="anchor" href="#%e4%b8%89-%e5%b8%b8%e8%a7%81%e7%bc%96%e8%af%91%e6%8a%a5%e9%94%99%e4%bf%ae%e5%a4%8d-no-cuda-toolset-found">#</a></h3>
+<p>如果你遇到该错误，通常是 VS 找不到 CUDA 路径。</p>
+<ul>
+<li><strong>手动修复</strong>：将 <code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.1\extras\visual_studio_integration\MSBuildExtensions</code> 下的所有文件，复制到 Visual Studio 的构建自定义目录中（例如 <code>...\MSBuild\Microsoft\VC\v170\BuildCustomizations</code>）。</li>
+</ul>
+<h3 id="四-运行时的榨干性能参数">四、 运行时的“榨干性能”参数<a class="anchor" href="#%e5%9b%9b-%e8%bf%90%e8%a1%8c%e6%97%b6%e7%9a%84%e6%a6%a8%e5%b9%b2%e6%80%a7%e8%83%bd%e5%8f%82%e6%95%b0">#</a></h3>
+<p>编译完成后，或者使用预编译的 <code>.dll</code> 库文件（如 <code>cublas64_13.dll</code>, <code>cudart64_13.dll</code> 等）时，请务必使用以下参数启动：</p>
+<ul>
+<li><strong><code>-ngl 99</code> (或 <code>--n-gpu-layers 99</code>)</strong>：
+将模型所有层强制加载到显存。4060 的 8G 显存足以完整运行量化后的 7B/8B 模型。</li>
+<li><strong><code>-fa on</code> (或 <code>--flash-attn on</code>)</strong>：
+<strong>必须开启</strong>。它能大幅提升推理速度并减少显存占用，是现代 NVIDIA 显卡的性能核心。</li>
+<li><strong><code>-c 8192</code> (Context Size)</strong>：
+合理设置上下文长度。开启 Flash Attention 后，你可以尝试更大的上下文而不会导致显存溢出。</li>
+<li><strong><code>-t 16</code> (Threads)</strong>：
+设置线程数与你 CPU 的逻辑核心数一致，加速 Prompt 的预处理阶段。</li>
+</ul>
+<h3 id="五-快速验证清单">五、 快速验证清单<a class="anchor" href="#%e4%ba%94-%e5%bf%ab%e9%80%9f%e9%aa%8c%e8%af%81%e6%b8%85%e5%8d%95">#</a></h3>
+<ol>
+<li><strong>检查设备识别</strong>：运行 <code>./llama-cli.exe --list-devices</code>，确认输出中有 <code>RTX 4060</code>。</li>
+<li><strong>检查库文件</strong>：确保 <code>llama-cli.exe</code> 与那三个 CUDA 核心 <code>.dll</code> 文件（cublas, cublasLt, cudart）位于同一文件夹下。</li>
+<li><strong>开启 Fallback</strong>：在 Windows NVIDIA 控制面板中确保开启了 <code>System Memory Fallback</code>，以防显存偶尔不足时程序崩溃。</li>
+</ol>
+</article>
  
       
 
@@ -196,6 +339,25 @@ https://github.com/alex-shpak/hugo-book
   
   
   
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/BlogPost/notes/hugo%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="flex align-center">
+        <img src="/BlogPost/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Hugo使用指南</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/BlogPost/notes/hello/" class="flex align-center">
+        <span>教程：如何将复杂命令封装为“简单命令”</span>
+        <img src="/BlogPost/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
 
 
  
@@ -218,6 +380,28 @@ https://github.com/alex-shpak/hugo-book
     </div>
 
     
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#一-环境准备-核心依赖">一、 环境准备 (核心依赖)</a>
+      <ul>
+        <li><a href="#二-性能最大化编译步骤">二、 性能最大化编译步骤</a></li>
+        <li><a href="#三-常见编译报错修复-no-cuda-toolset-found">三、 常见编译报错修复 (No CUDA toolset found)</a></li>
+        <li><a href="#四-运行时的榨干性能参数">四、 运行时的“榨干性能”参数</a></li>
+        <li><a href="#五-快速验证清单">五、 快速验证清单</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
   
  
   </main>
