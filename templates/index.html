@@ -25,6 +25,7 @@
 </head>
 <body>
     <div id="app" class="container">
+        {% raw %}
         <div class="header">
             <h2>🛒 电商商品价格自动化采集与对比工具</h2>
             <p style="color: #666; font-size: 14px;">自动抓取主流电商平台价格数据，并进行清洗、去重与性价比分析</p>
@@ -71,6 +72,7 @@
             </el-table>
         </div>
         <el-empty v-else description="暂无数据，请在上方输入关键词开始采集"></el-empty>
+        {% endraw %}
     </div>
 
     <script>
