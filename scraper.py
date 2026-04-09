@@ -2,6 +2,7 @@ import asyncio
 import json
 import argparse
 import random
+import os
 from playwright.async_api import async_playwright
 from processor import process_data
 
@@ -36,27 +37,77 @@ async def scrape_mock(keyword, platform="京东", max_items=20):
 # === 真实采集器 (以京东为例，可能受限于沙盒网络或防爬虫) ===
 async def scrape_jd(keyword, max_items=20):
     """
-    使用 Playwright 真实抓取京东搜索页面数据
+    使用 Playwright 真实抓取京东搜索页面数据，增加一些反爬规避措施
     """
     items = []
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
-        context = await browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        browser = await p.chromium.launch(
+            headless=True,
+            args=[
+                '--disable-blink-features=AutomationControlled',
+                '--no-sandbox',
+                '--disable-infobars',
+                '--disable-dev-shm-usage',
+                '--disable-extensions'
+            ]
         )
+        context = await browser.new_context(
+            user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            viewport={'width': 1280, 'height': 800},
+            extra_http_headers={
+                "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                "Sec-Ch-Ua": '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+                "Sec-Ch-Ua-Mobile": "?0",
+                "Sec-Ch-Ua-Platform": '"macOS"'
+            }
+        )
+        
+        # 注入绕过 webdriver 检测的脚本
+        await context.add_init_script("""
+            Object.defineProperty(navigator, 'webdriver', {
+                get: () => undefined
+            });
+        """)
+        
+        # 尝试加载本地的 cookies.json
+        if os.path.exists("jd_cookies.json"):
+            with open("jd_cookies.json", "r") as f:
+                cookies = json.load(f)
+                await context.add_cookies(cookies)
+                print("已加载 jd_cookies.json 登录状态！")
+
         page = await context.new_page()
         
         try:
-            url = f"https://search.jd.com/Search?keyword={keyword}"
-            await page.goto(url, wait_until="domcontentloaded", timeout=15000)
+            url = f"https://search.jd.com/Search?keyword={keyword}&enc=utf-8"
+            print(f"正在访问 JD 链接: {url}")
+            await page.goto(url, wait_until="domcontentloaded", timeout=20000)
             
-            # 滚动加载
-            for _ in range(3):
-                await page.mouse.wheel(0, 1000)
+            # 等待一段时间判断是否有验证码或跳转
+            await asyncio.sleep(2)
+            
+            # 随机滚动模拟真实用户
+            for _ in range(4):
+                await page.mouse.wheel(0, random.randint(500, 1000))
                 await asyncio.sleep(random.uniform(0.5, 1.5))
                 
-            await page.wait_for_selector("li.gl-item", timeout=5000)
-            elements = await page.query_selector_all("li.gl-item")
+            # 检查是否有商品列表
+            try:
+                # 兼容不同的类名
+                await page.wait_for_selector(".gl-item", timeout=10000)
+            except Exception as e:
+                # 截图保存现场以便调试
+                await page.screenshot(path="jd_error.png")
+                html = await page.content()
+                with open("jd_error.html", "w") as f:
+                    f.write(html)
+                print(f"[Error] 找不到商品列表，可能触发了反爬验证或需要登录。已截图保存为 jd_error.png。")
+                print("提示：请在本地浏览器登录京东后，通过插件导出 cookies 为 jd_cookies.json 放到当前目录重试。")
+                return items
+
+            elements = await page.query_selector_all(".gl-item")
+            print(f"在页面上找到 {len(elements)} 个商品元素")
             
             for el in elements[:max_items]:
                 try:
@@ -64,17 +115,23 @@ async def scrape_jd(keyword, max_items=20):
                     title = await el.eval_on_selector(".p-name em", "e => e.innerText")
                     url = await el.eval_on_selector(".p-name a", "e => e.href")
                     
-                    # 销量与评分 (部分列表可能没有)
+                    # 销量与评分 (京东搜索页通常展示评价数)
                     try:
                         sales_text = await el.eval_on_selector(".p-commit a", "e => e.innerText")
-                        sales = int(sales_text.replace('万+', '0000').replace('+', '')) if sales_text else 0
+                        sales = int(sales_text.replace('万+', '0000').replace('+', '').replace('万', '0000')) if sales_text else 0
                     except:
                         sales = random.randint(100, 5000)
                         
+                    # 店铺名称
+                    try:
+                        shop = await el.eval_on_selector(".p-shop a", "e => e.innerText")
+                    except:
+                        shop = "未知店铺"
+                        
                     items.append({
-                        "id": f"jd_{len(items)}",
+                        "id": f"jd_real_{len(items)}",
                         "platform": "京东",
-                        "title": title.strip(),
+                        "title": f"【{shop}】" + title.strip().replace('\n', ' '),
                         "price": float(price_text),
                         "sales": sales,
                         "rating": random.uniform(4.5, 5.0),  # 京东默认好评率通常较高
